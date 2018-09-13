@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+    div {
+      position: absolute;
+      width: 60px;
+      height: 25px;
+      color: green;
+      top: 50px;
+    }
+  </style>
+  <script>
+    'use strict';
+    var newufo;
+    function init() {
+      window.addEventListener("keydown", keydown);
+      newufo = new NewUFO(document.getElementById("ufo"), 100, 100);
+    }
+
+    function keydown(e) {
+      if (e.keyCode === 37) {
+        newufo.moveLeft();
+      } else if (e.keyCode === 39) {
+        newufo.moveRight();
+      } else if (e.keyCode === 38) {
+        newufo.moveUp();
+      } else if (e.keyCode === 40) {
+        newufo.moveDown();
+      }
+    }
+
+    class UFO {
+      constructor(_elem, _xpos) {
+        this.elem = _elem;
+        this.xpos = _xpos;
+        this.moveLeft = () => {
+          this.xpos -= 10;
+          this.elem.style.left = this.xpos + "px";
+        }
+        this.moveRight = () => {
+          this.xpos += 10;
+          this.elem.style.left = this.xpos + "px";
+        }
+      }
+    }
+
+    class NewUFO extends UFO {
+      constructor(_elem, _xpos, _ypos) {
+        super(_elem, _xpos);
+        this.ypos = _ypos;
+        this.moveUp = () => {
+          this.ypos -= 10;
+          this.elem.style.top = this.ypos + "px";
+        }
+        this.moveDown = () => {
+          this.ypos += 10;
+          this.elem.style.top = this.ypos + "px";
+        }
+      }
+    }
+  </script>
+</head>
+<body onload="init()">
+  <div id="ufo">
+    <(ooo)>
+  </div>
+</body>
+
+</html>
