@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var x = 10, y = 4;
+        var CNT;
+
+        function init() {
+            CNT = document.getElementById("canvas").getContext("2d");
+            window.addEventListener('keydown', keydown, true);
+            CNT.fillStyle = "rgb(255, 0, 0)";
+            CNT.fillRect(x * 16, y * 16, 15, 15);
+        }
+
+        function keydown (event) {
+            const code = event.keyCode;
+            switch (code) {
+                case 37:
+                    event.preventDefault();
+                    x--;
+                    break;
+                case 39:
+                    event.preventDefault();
+                    x++;
+                    break;
+                case 38:
+                    event.preventDefault();
+                    y--;
+                    break;
+                case 40:
+                    event.preventDefault();
+                    y++;
+                    break;       
+            }
+            CNT.fillRect(x * 16, y * 16, 15, 15);
+        }
+
+    </script>
+    <canvas id="canvas" width="600" height="600"></canvas>
+</head>
+<body onload="init()">
+</body>
+</html>
